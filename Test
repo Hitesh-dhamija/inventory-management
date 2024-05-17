@@ -1,0 +1,695 @@
+[5/16, 23:30] Hitesh: import "./ViewProduct.css";
+import img from "../../../../assests/images/laptop-computer-travel-37983668.webp";
+const items = [
+  {
+    id: "001",
+    image: "images/1.jpg",
+    company: "Carlton London",
+    item_name: "Rhodium-Plated CZ Floral Studs",
+    original_price: 1045,
+    current_price: 606,
+    discount_percentage: 42,
+    return_period: 14,
+    delivery_date: "10 Oct 2023",
+    rating: {
+      stars: 4.5,
+      count: 1400,
+    },
+  },
+  {
+    id: "002",
+    image: "images/2.jpg",
+    company: "CUKOO",
+    item_name: "Women Padded Halter Neck Swimming Dress",
+    original_price: 2599,
+    current_price: 1507,
+    discount_percentage: 42,
+    return_period: 14,
+    delivery_date: "10 Oct 2023",
+    rating: {
+      stars: 4.3,
+      count: 24,
+    },
+  },
+  {
+    id: "003",
+    image: "images/3.jpg",
+    company: "NUEVOSDAMAS",
+    item_name: "Women Red & White Printed A-Line Knee-Length Skirts",
+    original_price: 1599,
+    current_price: 495,
+    discount_percentage: 69,
+    return_period: 14,
+    delivery_date: "10 Oct 2023",
+    rating: {
+      stars: 4.1,
+      count: 249,
+    },
+  },
+  {
+    id: "004",
+    image: "images/4.jpg",
+    company: "ADIDAS",
+    item_name: "Indian Cricket ODI Jersey",
+    original_price: 999,
+    current_price: 999,
+    discount_percentage: 0,
+    return_period: 14,
+    delivery_date: "10 Oct 2023",
+    rating: {
+      stars: 5.0,
+      count: 10,
+    },
+  },
+  {
+    id: "005",
+    image: "images/5.jpg",
+    company: "Roadster",
+    item_name: "Pure Cotton T-shirt",
+    original_price: 1399,
+    current_price: 489,
+    discount_percentage: 65,
+    return_period: 14,
+    delivery_date: "10 Oct 2023",
+    rating: {
+      stars: 4.2,
+      count: 3500,
+    },
+  },
+  {
+    id: "006",
+    image: "images/6.jpg",
+    company: "Nike",
+    item_name: "Men ReactX Running Shoes",
+    original_price: 14995,
+    current_price: 14995,
+    discount_percentage: 0,
+    return_period: 14,
+    delivery_date: "10 Oct 2023",
+    rating: {
+      stars: 0.0,
+      count: 0,
+    },
+  },
+  {
+    id: "007",
+    image: "images/7.jpg",
+    company: "The Indian Garage Co",
+    item_name: "Men Slim Fit Regular Shorts",
+    original_price: 1599,
+    current_price: 639,
+    discount_percentage: 60,
+    rating: {
+      stars: 4.2,
+      count: 388,
+    },
+  },
+  {
+    id: "008",
+    image: "images/8.jpg",
+    company: "Nivea",
+    item_name: "Men Fresh Deodrant 150ml",
+    original_price: 285,
+    current_price: 142,
+    discount_percentage: 50,
+    return_period: 14,
+    delivery_date: "10 Oct 2023",
+    rating: {
+      stars: 4.2,
+      count: 5200,
+    },
+  },
+];
+
+const ViewProduct = () => {
+  return (
+    <div className="items-container">
+      {items.map((item) => (
+        <div className="item-container" key={item.id}>
+          <img className="item-image" src={img} alt="item image" />
+          <div className="rating">
+            {item.rating.stars} ⭐ | {item.rating.count}
+          </div>
+          <div className="company-name">{item.company}</div>
+          <div className="item-name">{item.item_name}</div>
+          <div className="price">
+            <span className="current-price">Rs {item.current_price}</span>
+            <span className="original-price">Rs {item.original_price}</span>
+            <span className="discount">({item.discount_percentage}% OFF)</span>
+          </div>
+          <button
+            className="btn-add-bag"
+            onClick={() => {
+              console.log(item);
+              handleAddBag(item.id);
+            }}
+          >
+            Add to Bag
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ViewProduct;
+[5/16, 23:43] Hitesh: /* Main section */
+  
+  
+   .items-container {
+    overflow: auto;
+    width: 80%;
+    margin: 50px 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  
+  
+  .items-container {
+    width: 80%;
+    margin: 40px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+  .item-container {
+    width: 250px;
+    margin: 15px;
+  }
+  .item-image {
+    width: 100%;
+  }
+  .rating {
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .company-name {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    color: #282c3f;
+    margin-bottom: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .item-name {
+    color: #535766;
+    font-size: 14px;
+    line-height: 1;
+    margin-bottom: 0;
+    margin-top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 400;
+    display: block;
+  }
+  .price {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 15px;
+    color: #282c3f;
+    white-space: nowrap;
+  }
+  .current-price {
+    font-size: 14px;
+    font-weight: 700;
+    color: #282c3f;
+  }
+  .original-price {
+    text-decoration: line-through;
+    color: #7e818c;
+    font-weight: 400;
+    margin-left: 5px;
+    font-size: 12px;
+  }
+  .discount {
+    color: #ff905a;
+    font-weight: 400;
+    font-size: 12px;
+    margin-left: 5px;
+  }
+  .btn-add-bag {
+    margin-top: 8px;
+    font-size: 18px;
+    width: 100%;
+    background-color: lightgreen;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+[5/16, 23:43] Hitesh: import React, { useEffect, useState, useRef } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {
+  getModelByBrandId,
+  view_category,
+  getSubCategorybyCategoryId,
+  getBrandbysubCategoryId,
+  getLabelbysubCategoryId,
+  addProduct,
+  multi_upload,
+} from "../../../../Constant/Constant";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { validateImage } from "../../../../middleware/Validation";
+import "./AddProduct.css"; // Make sure to create this CSS file
+
+const AddProduct = () => {
+  const [newProduct, setNewProduct] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [labels, setLabelList] = useState([
+    {
+      id: 1,
+      name: "color",
+      values: ["Red", "Green", "Blue", "Black", "White"],
+    },
+    {
+      id: 2,
+      name: "size",
+      values: ["Small", "Medium", "Large", "X-Large"],
+    },
+    {
+      id: 3,
+      name: "material",
+      values: ["Cotton", "Polyester", "Wool", "Silk"],
+    },
+    {
+      id: 4,
+      name: "gender",
+      values: ["Male", "Female", "Unisex"],
+    },
+  ]);
+  const [selectedLabel, setSelectedLabel] = useState([]);
+  const [categories, setCategoriesList] = useState([]);
+  const [selectedSubCategory, setSelectedSubCategory] = useState("");
+  const [subCategories, setSubCategoriesList] = useState([]);
+  const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedModel, setSelectedModel] = useState("");
+  const [Quantity, setQuantity] = useState("");
+  const [description, setDescription] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [error, setError] = useState({ selectedFile_error: "" });
+  const fileRef = useRef();
+  const [models, setModelList] = useState([]);
+  const [brands, setBrandList] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(view_category);
+        if (isMounted) {
+          setCategoriesList(
+            res.data.categories.map((category) => ({
+              id: category.id,
+              name: category.category_name,
+            }))
+          );
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const capitalizeFirstLetter = (string) => {
+    if (string && typeof string === "string") {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+    return string;
+  };
+
+  const handleQuantityChange = (e) => {
+    setQuantity(e.target.value);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "-" || event.key === "+") {
+      event.preventDefault();
+    }
+  };
+
+  const handleFileChange = (event) => {
+    const files = event.target.files;
+    const validatedFiles = Array.from(files).map((file) => validateImage(file));
+    const invalidFiles = validatedFiles.filter((file) => !file.status);
+    if (invalidFiles.length > 0) {
+      const errorMessage = invalidFiles.map((file) => file.message).join(", ");
+      setError((prev) => ({ ...prev, selectedFile_error: errorMessage }));
+      setSelectedFile(null);
+      return;
+    }
+    setError((prev) => ({ ...prev, selectedFile_error: "" }));
+    const validFiles = validatedFiles.map((file) => file.message);
+    setSelectedFile(validFiles);
+  };
+
+  const handleCategoryChange = async (e) => {
+    const categoryId = e.target.value;
+    setSelectedCategory(categoryId);
+    try {
+      const res = await axios.get(`${getSubCategorybyCategoryId}${categoryId}`);
+      setSubCategoriesList(
+        res.data.sub_category.map((subCategory) => ({
+          id: subCategory.id,
+          name: subCategory.sub_category_name,
+        }))
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubCategoryChange = async (e) => {
+    const subCategoryId = e.target.value;
+    setSelectedSubCategory(subCategoryId);
+    try {
+      const brandRes = await axios.get(
+        `${getBrandbysubCategoryId}${subCategoryId}`
+      );
+      setBrandList(
+        brandRes.data.brand.map((brand) => ({
+          id: brand.id,
+          name: brand.brand_name,
+        }))
+      );
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+      const labelRes = await axios.get(
+        `${getLabelbysubCategoryId}${subCategoryId}`
+      );
+      const labelsData = labelRes.data.labels.map((label) => ({
+        id: label.id,
+        name: label.label_name,
+        values: label.values,
+      }));
+      setLabelList(labelsData);
+      setSelectedLabel(Array(labelsData.length).fill(""));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleBrandChange = async (e) => {
+    const brandId = e.target.value;
+    setSelectedBrand(brandId);
+    try {
+      const res = await axios.get(`${getModelByBrandId}${brandId}`);
+      setModelList(
+        res.data.model.map((model) => ({
+          id: model.id,
+          name: model.model_name,
+        }))
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleModelChange = (e) => {
+    setSelectedModel(e.target.value);
+  };
+
+  const handleLabelChange = (e, index) => {
+    const { value } = e.target;
+    setSelectedLabel((prevState) => {
+      const newState = [...prevState];
+      newState[index] = value;
+      return newState;
+    });
+  };
+
+  const handleInputChange = (e, index) => {
+    const { value } = e.target;
+    setSelectedLabel((prevState) => {
+      const newState = [...prevState];
+      newState[index] = value;
+      return newState;
+    });
+  };
+
+  const handleAddProduct = async () => {
+    const formData = new FormData();
+    selectedFile.forEach((file) => {
+      formData.append("files", file);
+    });
+    formData.append("type", "product");
+
+    try {
+      const labelsData = labels.map((label, index) => ({
+        label_id: label.id,
+        values: selectedLabel[index],
+      }));
+      const uploadRes = await axios.post(multi_upload, formData);
+      const imagesUrl = uploadRes.data.data;
+      const productData = {
+        category_id: selectedCategory,
+        sub_category_id: selectedSubCategory,
+        brand_id: selectedBrand,
+        model_id: selectedModel,
+        quantity: Quantity,
+        labels: labelsData,
+        description: description,
+        product_images: imagesUrl,
+      };
+
+      const addCategoryRes = await axios.post(addProduct, productData);
+      const productName = subCategories.find(
+        (subcategory) => subcategory.id == selectedSubCategory
+      )?.name;
+      toast.info(`${productName} added`, { position: "top-center" });
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
+
+  const handleCancelProduct = () => {
+    console.log("cancel Button Clicked");
+  };
+
+  return (
+    <>
+      <div className="cstm-breadcrumb mt-2">
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <Link to="/admin/dashboard">
+                <FaHome size={25} />
+              </Link>
+            </li>
+            <li className="breadcrumb-item active">
+              <Link to="#"> Add Product</Link>
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <div className="dashboard dash-board-scroll">
+        <h1 className="header-title"> Add Product</h1>
+        <div className="product-conatainer">
+          <div className="dashboard-order">
+            <div>
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="form-row">
+                    <div className="form-group col-md-4">
+                      <label className="form-label">
+                        Category<sup className="cstm-sup">*</sup>
+                      </label>
+                      <select
+                        value={selectedCategory}
+                        onChange={handleCategoryChange}
+                        className="form-control"
+                      >
+                        <option value="">Select a category</option>
+                        {categories.map((category) => (
+                          <option key={category.id} value={category.id}>
+                            {category.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="form-group col-md-4">
+                      <label className="form-label">
+                        Sub-Category<sup className="cstm-sup">*</sup>
+                      </label>
+                      <select
+                        value={selectedSubCategory}
+                        onChange={handleSubCategoryChange}
+                        className="form-control"
+                      >
+                        <option value="">Select a sub-category</option>
+                        {subCategories.map((subCategory) => (
+                          <option key={subCategory.id} value={subCategory.id}>
+                            {subCategory.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="form-group col-md-4">
+                      <label className="form-label">
+                        Brand<sup className="cstm-sup">*</sup>
+                      </label>
+                      <select
+                        value={selectedBrand}
+                        onChange={handleBrandChange}
+                        className="form-control"
+                      >
+                        <option value="">Select a brand</option>
+                        {brands.map((brand) => (
+                          <option key={brand.id} value={brand.id}>
+                            {brand.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="form-row">
+                    {labels.map((label, index) => (
+                      <div key={index} className="form-group col-md-4">
+                        <label>
+                          {capitalizeFirstLetter(label.name)}
+                          <sup className="cstm-sup">*</sup>
+                        </label>
+                        {label.values.length > 0 ? (
+                          <select
+                            className="form-control"
+                            value={selectedLabel[index] || ""}
+                            onChange={(e) => handleLabelChange(e, index)}
+                          >
+                            <option value="">Select a value</option>
+                            {label.values.map((value, i) => (
+                              <option key={i} value={value}>
+                                {value}
+                              </option>
+                            ))}
+                          </select>
+                        ) : (
+                          <input
+                            className="form-control"
+                            type="text"
+                            placeholder="Enter value"
+                            value={selectedLabel[index] || ""}
+                            onChange={(e) => handleInputChange(e, index)}
+                          />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="form-row">
+                    <div className="form-group col-md-4">
+                      <label className="form-label">
+                        Quantity<sup className="cstm-sup">*</sup>
+                      </label>
+                      <input
+                        type="number"
+                        value={Quantity}
+                        onChange={handleQuantityChange}
+                        placeholder="Enter no of Products"
+                        className="form-control"
+                        min="1"
+                        onKeyDown={handleKeyPress}
+                      />
+                    </div>
+                    <div className="form-group col-md-8">
+                      <label className="form-label">
+                        Choose Image<sup className="cstm-sup">*</sup>
+                      </label>
+                      <input
+                        ref={fileRef}
+                        type="file"
+                        placeholder="Upload Image"
+                        className="form-control"
+                        onChange={handleFileChange}
+                        multiple
+                      />
+                      <span className="error">{error.selectedFile_error}</span>
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">
+                      Description<sup className="cstm-sup">*</sup>
+                    </label>
+                    <ReactQuill
+                      style={{ backgroundColor: "white" }}
+                      value={description}
+                      onChange={setDescription}
+                    />
+                  </div>
+                  <div className="form-group d-flex justify-content-end">
+                    <button
+                      onClick={handleCancelProduct}
+                      className="cancel-btn"
+                    >
+                      Cancel
+                    </button>
+                    <button onClick={handleAddProduct} className="add-btn ml-2">
+                      Add
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default AddProduct;
+[5/16, 23:44] Hitesh: .dashboard-order .form-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .dashboard-order .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .dashboard-order .form-group label {
+    font-weight: bold;
+  }
+  
+  .dashboard-order .form-control {
+    width: 100%;
+  }
+  
+  .dashboard-order .form-group .error {
+    color: red;
+  }
+  
+  /* .cancel-btn {
+    background-color: #d9534f;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-btn {
+    background-color: #5cb85c;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+   */
